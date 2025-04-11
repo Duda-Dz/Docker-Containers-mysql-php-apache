@@ -14,11 +14,25 @@
 git clone https://github.com/Duda-Dz/Docker-Containers-mysql-php-apache.git
 
 ```
+
 ### Para Entrar no Repositório:
 ```sh
 cd Docker-Containers-mysql-php-apache
 
 ```
+
+### Para Atualizar:
+```sh
+apt upgrade -y
+
+````
+
+### Para Instalar o Vizualizador de Arquivos:
+```sh
+apt install tree
+
+```
+
 ### Para Visualizar Estrutura do Projeto sem Arquivos Ocultos:
 ```sh
 tree
@@ -61,9 +75,16 @@ tree -a -L 2
 └── nginx.conf
 
 ```
+
+### Instalar Docker:
+```sh
+apt install docker.io -y
+
+```
+
 ### Subindo MySQL:
 ```sh
- sudo docker run -d \
+docker run -d \
  --name mysql-container \
 -e MYSQL_ROOT_PASSWORD=root123 \
 -e MYSQL_DATABASE=meubanco \
@@ -73,12 +94,48 @@ tree -a -L 2
 mysql:8.0
 
 ```
+
+### Criar Diretorio Para Armazenar PHP-Apache:
+```sh
+mkdir php-apache
+
+```
+
+### Para Mover Arquivos PHP-Apache Para o Diretorio php-apache:
+```sh
+mv Dockerfile.php php-apache
+
+```
+```sh
+mv index.php php-apache
+
+```
+
+### Para Renomear o Dockerfile.php em Dockerfile:
+```sh
+mv Dockerfile.php Dockerfile
+```
+
+OBS: Criei o Dockerfile.php para ficar organizado os arquivos, porém é preciso transformar em somente 'Dockerfile', para que o projeto rode sem problemas.
+
+### Criar Network:
+```sh
+docker network create meu-projeto-net
+
+```
+
+### Criar Imagem php-apache-app a Partir do Dockerfile:
+```sh
+docker build -t php-apache-app .
+
+```
+
 ### Subindo PHP:
 ```sh
-sudo docker run -d \
+docker run -d \
   --name apache-php-container \
   -p 8080:80 \
-  --network mysql-container:mysql \
+  --network meu-projeto-net \
   php-apache-app
 
 ```
