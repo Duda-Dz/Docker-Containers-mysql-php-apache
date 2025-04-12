@@ -116,7 +116,7 @@ mv index.php php-apache
 mv Dockerfile.php Dockerfile
 ```
 
-OBS: Criei o Dockerfile.php para ficar organizado os arquivos, porém é preciso transformar em somente 'Dockerfile', para que o projeto rode sem problemas.
+### 📌 OBS: Criei o Dockerfile.php para ficar organizado os arquivos, porém é preciso transformar em somente 'Dockerfile', para que o projeto rode sem problemas.
 
 ### Criar Network:
 ```sh
@@ -160,7 +160,7 @@ apt update -y
 
 ```
 
-### FAÇA UPDATE NAS 3 INSTANCIAS
+### 📌 FAÇA UPDATE NAS 3 INSTANCIAS
 
 ### Instalando Docker:
 
@@ -169,7 +169,7 @@ apt install docker.io -y
 
 ```
 
-### INSTALE DOCKER NAS 3 INSTANCIAS 
+### 📌 INSTALE DOCKER NAS 3 INSTANCIAS 
 
 ### Instalando MySQL:
 ```sh
@@ -177,7 +177,7 @@ apt install mysql-server-8.0 -y
 
 ```
 
-### INSTALE O MYSQL NAS 3 INSTANCIAS 
+### 📌 INSTALE O MYSQL NAS 3 INSTANCIAS 
 
 ### Criando Arquivo dados.sql:
 ```sh
@@ -202,7 +202,7 @@ INSERT INTO users (ClienteID, name, email, endereço, cidade, produto VALUES ('1
 
 ```
 
-### CRIE O ARQUIVO DADOS.SQL NA INSTANCIA PRINCIPAL 
+### 📌 CRIE O ARQUIVO DADOS.SQL NA INSTANCIA PRINCIPAL 
 
 ### Criar Diretorio Data Para Armazenamento:
 ```sh
@@ -238,7 +238,7 @@ mkdir /app
 
 ```
 
-### CRIE OS DIRETORIOS NA INSTANCIA PRINCIPAL
+### 📌 CRIE OS DIRETORIOS NA INSTANCIA PRINCIPAL
 
 ### Para Habilitar o Serviço Docker:
 ```sh
@@ -252,7 +252,7 @@ systemctl start docker
 
 ```
 
-### HABILITAR E INICIAR DOCKER NAS 3 INSTANCIAS 
+### 📌 HABILITAR E INICIAR DOCKER NAS 3 INSTANCIAS 
 
 ### Criar Dockerfile MySQL:
 ```sh
@@ -266,7 +266,7 @@ COPY ./dados.sql /docker-entrypoint-initdb.d/
 
 ```
 
-### CRIAR DOCKERFILE MYSQL NA INSTANCIA PRINCIPAL
+### 📌 CRIAR DOCKERFILE MYSQL NA INSTANCIA PRINCIPAL
 
 ### Construir uma Imagem por Meio do Dockerfile:
 ```sh
@@ -280,7 +280,7 @@ docker run -d --name mysql-dados -p 3306:3306 mysql-container
 
 ```
 
-### CONSTRUA IMAGEM E EXECUTE O CONTEINER MYSQL NA INSTANCIA PRINCIPAL
+### 📌 CONSTRUA IMAGEM E EXECUTE O CONTEINER MYSQL NA INSTANCIA PRINCIPAL
 
 ### Testar Banco de Dados:
 ```sh
@@ -288,7 +288,7 @@ docker exec -it mysql-dados mysql -u root -p
 
 ```
 
-### TESTE O BANCO DE DADOS NA INSTANCIA PRINCIPAL
+### 📌 TESTE O BANCO DE DADOS NA INSTANCIA PRINCIPAL
 
 ### Criar Dockerfile PHP:
 ```sh
@@ -356,7 +356,7 @@ if ($link->query($query) === TRUE) {
 
 ```
 
-### CRIAR DOCKERFILE PHP E INDEX.PHP NA INSTANCIA PRINCIPAL
+### 📌 CRIAR DOCKERFILE PHP E INDEX.PHP NA INSTANCIA PRINCIPAL
 
 ### Criar Imagem PHP:
 ```sh
@@ -370,9 +370,9 @@ docker run -d --name web-app -p 80:80 php-apache
 
 ```
 
-### CRIAR IMAGEM PHP E EXECUTAR CONTAINER PHP NA INSTANCIA PRINCIPAL
+### 📌 CRIAR IMAGEM PHP E EXECUTAR CONTAINER PHP NA INSTANCIA PRINCIPAL
 
-### Fazer teste de Estresse:
+### 🔥 Fazer teste de Estresse:
 ```md
 1. Abrir o site loader.io
 
@@ -386,9 +386,9 @@ docker run -d --name web-app -p 80:80 php-apache
 
 ```
 
-### O Loader.io vai passar um código 
+### 🔥 O Loader.io vai passar um código 
 
-### Na Instancia Principal vai Armazenar o Código:
+### 🔥 Na Instancia Principal vai Armazenar o Código:
 ```sh
 nano código
 
@@ -398,9 +398,9 @@ colar código
 
 ```
 
-### Voltar no site, vão dar confirmação que os containers estarão online, e então é so fazer o teste de strees 
+### 🔥 Voltar no site, vão dar confirmação que os containers estarão online, e então é so fazer o teste de strees 
 
-### FAZER OS PROCESSOS DE TESTE DE STRESS NA INSTANCIA PRINCIPAL
+### 📌 FAZER OS PROCESSOS DE TESTE DE STRESS NA INSTANCIA PRINCIPAL
 
 ### Iniciando o Swarm na Instancia Principal:
 ```sh
@@ -434,7 +434,7 @@ docker service create --name web-server --replicas 3 -dt -p 80:80 \
 --mount type=volume,src=app,dst=/app/ webdevops/php-apache:alpine-php7
 
 ```
-### CRIAR SERVIÇO NA INSTANCIA PRINCIPAL
+### 📌 CRIAR SERVIÇO NA INSTANCIA PRINCIPAL
 
 ### Listar Serviços em Execução:
 ```sh
@@ -447,7 +447,7 @@ docker service ls
 docker service ps web-server
 
 ```
-### LISTAR SERVIÇO E VER CONTAINER WEB-SERVER PODE FAZER NAS 3 INSTANCIAS SE DESEJAR
+### 📌 LISTAR SERVIÇO E VER CONTAINER WEB-SERVER PODE FAZER NAS 3 INSTANCIAS SE DESEJAR
 
 ### Instalar nfs-kernel-server na Instancia Principal (instancia Leader):
 ```sh
@@ -547,9 +547,9 @@ events { }
 docker run -d --name nginx-lb -p 80:80 -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf nginx
 
 ```
-### CRIAR NGINX E SUBIR CONTAINER NGINX NA INSTANCIA PRINCIPAL
+### 📌 CRIAR NGINX E SUBIR CONTAINER NGINX NA INSTANCIA PRINCIPAL
 
-### Fazer o Processo de Teste de Estresse Novamente
+### 🔥 Fazer o Processo de Teste de Estresse Novamente
 
 
 
